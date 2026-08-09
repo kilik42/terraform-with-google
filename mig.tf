@@ -3,7 +3,7 @@
 
 resource "google_compute_instance_template" "template" {
   name         = "${var.name}-template"
-  machine_type = "e2-medium"
+  machine_type = var.machine_type
   region      = var.region
 
   disk {

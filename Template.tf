@@ -2,12 +2,16 @@
 
 resource "google_compute_instance" "web_server" {
   name         = "${var.name}-web-server"
-  machine_type = "e2-medium"
+  machine_type =  var.machine_type
+#   region      = var.region
   zone         = var.zone
 
   boot_disk {
     initialize_params {
       image = var.machine_image
+      labels = {
+        environment = var.environment
+      }
     }
   }
   network_interface {
@@ -19,4 +23,6 @@ resource "google_compute_instance" "web_server" {
       //allocates an ip address to the instance for external access
     }
   }
+
+  metadata_startup_script = file("startup-script.sh")
 }

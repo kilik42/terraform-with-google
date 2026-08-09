@@ -29,11 +29,19 @@ variable "machine_image" {
   default     = "projects/debian-cloud/global/images/family/debian-11"
 }
 
+# machine type
+variable "machine_type" {
+  description = "The machine type to use for the instance."
+  type        = string
+  default     = "e2-medium"
+}
 #network
 variable "network" {
   description = "The name of the network to which the instance will be connected."
   type        = string
   default     = "default" 
+  # do we need to create a custom network? if yes, then we need to change the default value to the name of the custom network.
+  # example: "custom-vpc-network"
 }
 
 # subnetwork
@@ -42,10 +50,18 @@ variable "subnetwork" {
   description = "The name of the subnetwork to which the instance will be connected."
   type        = string
   default     = "default"
+  #example : "custom-subnet"
 }
 
 variable "subnet_cidr" {
   description = "The CIDR range for the subnetwork."
   type        = string
   default     = "10.0.1.0/24"
+}
+
+# environment variable
+variable "environment" {
+  description = "The environment in which the resources will be provisioned."
+  type        = string
+  default     = "dev"
 }
