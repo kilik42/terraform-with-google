@@ -9,8 +9,10 @@ resource "google_compute_firewall" "allow_http" {
 
   allow {
     protocol = "tcp"
-    ports    = ["80", "8080", "1000-2000"] # this allows traffic on ports 80, 8080, and the range 1000-2000
+    ports    = ["80", "8080"] # this allows traffic on ports 80, 8080, and the range 1000-2000
   }
+
+  source_ranges = ["0.0.0.0/0"] # this allows traffic from any IP address. You can restrict this to specific IP ranges if needed.
 
   source_tags = ["web"]
 }
