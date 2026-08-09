@@ -65,3 +65,16 @@ variable "environment" {
   type        = string
   default     = "dev"
 }
+
+# load balancer
+variable "load_balancer_name" {
+  description = "The name of the load balancer to be created."
+  type        = string
+  default     = "app-load-balancer"
+}
+
+variable "load_balancer_backend_name" {
+  description = "The name of the backend service for the load balancer."
+  type        = string
+  default     = "app-backend-service"
+}
