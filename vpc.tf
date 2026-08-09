@@ -14,3 +14,19 @@ resource "google_compute_subnetwork" "custom_subnet" {
   region        = var.region
   network       = google_compute_network.custom_vpc_network.id
 }
+
+# resource "google_compute_firewall" "default" {
+#   name    = "test-firewall"
+#   network = google_compute_network.custom_vpc_network.id
+
+#   allow {
+#     protocol = "icmp"
+#   }
+
+#   allow {
+#     protocol = "tcp"
+#     ports    = ["80", "8080", "1000-2000"]
+#   }
+
+#   source_tags = ["web"]
+# }
